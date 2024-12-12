@@ -19,15 +19,8 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from django.contrib.auth.hashers import make_password
 
 # MongoDB Configuration
-mongo_client = MongoClient(
-    "mongodb+srv://alimirsa123:a5VtspGwzNRv3m7b@cluster0.3wmvf.mongodb.net/",
-    retryWrites=True,
-    w="majority",
-    appName="Cluster0"
-)
-mongo_db = mongo_client["Cluster0"]
-users_collection = mongo_db["users"]
-tasks_collection = mongo_db["tasks"]
+users_collection = settings.MONGO_COLLECTIONS['users']
+tasks_collection = settings.MONGO_COLLECTIONS['tasks']
 
 
 class TaskViewSet(viewsets.ViewSet):
